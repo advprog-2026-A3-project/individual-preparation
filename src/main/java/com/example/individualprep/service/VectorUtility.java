@@ -6,8 +6,12 @@ import org.springframework.stereotype.Service;
 public class VectorUtility {
     
     public double[] add(double[] v1, double[] v2) {
-        // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        int vectorLength = v1.length;
+        double[] result = new double[vectorLength];
+        for(int index=0; index < vectorLength; index++){
+            result[index] = v1[index] + v2[index];
+        }
+        return result;
     }
 
     public double[] subtract(double[] v1, double[] v2) {
