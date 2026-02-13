@@ -2,9 +2,9 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "*" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "*" ]
 
 jobs:
   build-and-analyze:
@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Check out the git repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up java toolchain
         uses: actions/setup-java@v4
         with:
