@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: CI
 
 on:
@@ -13,6 +14,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+=======
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+>>>>>>> b51a20e2fb13b7a9c0423129f4b812f6e74a9af9
         with:
           fetch-depth: 0
 
@@ -21,11 +38,36 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+<<<<<<< HEAD
           cache: gradle
+=======
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: |
+            ${{ runner.os }}-sonar
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Fix gradlew line endings (CRLF -> LF)
+        run: sed -i 's/\r$//' gradlew
+>>>>>>> b51a20e2fb13b7a9c0423129f4b812f6e74a9af9
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+<<<<<<< HEAD
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -41,3 +83,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonar --info
+=======
+      - name: Build (with tests + checkstyle + jacoco)
+        run: ./gradlew --no-daemon clean build --stacktrace
+
+      - name: SonarCloud analysis
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew --no-daemon sonar --stacktrace
+>>>>>>> b51a20e2fb13b7a9c0423129f4b812f6e74a9af9
