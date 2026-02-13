@@ -33,8 +33,8 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build and Test with Gradle
-        run: ./gradlew build jacocoTestReport
+      - name: Build, Test, Checkstyle, Coverage
+        run: ./gradlew clean build jacocoTestReport
 
       - name: SonarCloud Scan
         env:
