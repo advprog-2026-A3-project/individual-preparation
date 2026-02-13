@@ -21,11 +21,26 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	checkstyle {
+		resolutionStrategy {
+			force 'com.google.guava:guava:33.3.1-jre'
+		}
+		exclude group: 'com.google.collections', module: 'google-collections'
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Checkstyle tool
+	checkstyle 'com.puppycrawl.tools:checkstyle:10.12.5'
+
+	// Paksa guava untuk checkstyle (jangan campur versi lain)
+	checkstyle 'com.google.guava:guava:33.3.1-jre'
 }
 
 tasks.named('test') {
