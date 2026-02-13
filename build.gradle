@@ -40,6 +40,11 @@ tasks.jacocoTestReport{
 	dependsOn(tasks.test)
 }
 
+tasks.named('check') {
+	dependsOn 'checkstyleMain', 'checkstyleTest'
+}
+
+
 jacocoTestReport {
 	dependsOn test
 	reports {
