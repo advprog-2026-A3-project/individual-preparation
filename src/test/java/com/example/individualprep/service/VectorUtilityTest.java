@@ -10,11 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest
 public class VectorUtilityTest {
 
-    @Autowired
-    private VectorUtility vectorUtility;
-
     @Test
     void testVectorNorm_PositiveNumbers() {
+        VectorUtility vectorUtility = new VectorUtility();
         double[] vector = {3.0, 4.0};
         double result = vectorUtility.norm(vector);
         assertEquals(5.0, result, 0.0001);
@@ -22,6 +20,7 @@ public class VectorUtilityTest {
 
     @Test
     void testVectorNorm_NegativeNumbers() {
+        VectorUtility vectorUtility = new VectorUtility();
         double[] vector = {-3.0, 4.0};
         double result = vectorUtility.norm(vector);
         assertEquals(5.0, result, 0.0001);
@@ -29,6 +28,7 @@ public class VectorUtilityTest {
 
     @Test
     void testVectorNorm_ZeroVector() {
+        VectorUtility vectorUtility = new VectorUtility();
         double[] vector = {0.0, 0.0, 0.0};
         double result = vectorUtility.norm(vector);
         assertEquals(0.0, result, 0.0001);
@@ -100,5 +100,71 @@ public class VectorUtilityTest {
         assertThrows(IllegalArgumentException.class, () -> {
             vectorUtility.dotProduct(v1, v2);
         }, "Harus throw exception untuk vector dengan panjang berbeda!");
+    }
+
+    @Test
+    void testAddPositiveVectors() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] v2 = {4.0, 5.0, 6.0};
+
+        double[] result = vectorUtility.add(v1, v2);
+
+        assertArrayEquals(new double[]{5.0, 7.0, 9.0}, result, 0.000001);
+    }
+
+    @Test
+    void testAddWithNegativeNumbers() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = {-1.0, -2.0, 3.0};
+        double[] v2 = {1.0, 2.0, -3.0};
+
+        double[] result = vectorUtility.add(v1, v2);
+
+        assertArrayEquals(new double[]{0.0, 0.0, 0.0}, result, 0.000001);
+    }
+
+    @Test
+    void testAddEmptyVectors() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = {};
+        double[] v2 = {};
+
+        double[] result = vectorUtility.add(v1, v2);
+
+        assertEquals(0, result.length);
+    }
+
+    @Test
+    void testAddNullVectorThrowsException() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = null;
+        double[] v2 = {1.0, 2.0};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.add(v1, v2);
+        });
+    }
+
+    @Test
+    void testAddDifferentLengthThrowsException() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = {1.0, 2.0};
+        double[] v2 = {1.0};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.add(v1, v2);
+        });
+    }
+
+    @Test
+    void testAddFloatingPointPrecision() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] v1 = {0.1, 0.2};
+        double[] v2 = {0.2, 0.3};
+
+        double[] result = vectorUtility.add(v1, v2);
+
+        assertArrayEquals(new double[]{0.3, 0.5}, result, 0.000001);
     }
 }
