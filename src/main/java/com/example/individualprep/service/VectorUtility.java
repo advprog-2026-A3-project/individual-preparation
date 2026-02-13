@@ -43,7 +43,15 @@ public class VectorUtility {
     }
     
     public double norm(double[] v1) {
-        // TODO: Implement me properly!
-        return 0.0;
+        if (v1 == null || v1.length == 0) {
+            return 0.0;
+        }
+
+        double sum = 0;
+        for (double val : v1) {
+            sum += val * val;
+        }
+
+        return Math.sqrt(sum);
     }
 }
