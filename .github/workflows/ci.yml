@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-analyze:
     name: Build and Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out the git repository
         uses: actions/checkout@v4
