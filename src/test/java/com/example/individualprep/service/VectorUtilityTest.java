@@ -1,16 +1,18 @@
 package com.example.individualprep.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-@SpringBootTest
 public class VectorUtilityTest {
 
-    @Autowired
     private VectorUtility vectorUtility;
+
+    @BeforeEach
+    void setUp() {
+        vectorUtility = new VectorUtility();
+    }
 
     @Test
     void testVectorNorm_PositiveNumbers() {
@@ -35,7 +37,6 @@ public class VectorUtilityTest {
 
     @Test
     void testMultiply() {
-        VectorUtility vectorUtility = new VectorUtility();
         double[] inputVector = {2.0, 5.0, -3.0};
         int scalar = 3;
 
