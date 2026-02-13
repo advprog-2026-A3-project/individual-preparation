@@ -43,7 +43,7 @@ jacocoTestReport {
 
 sonar {
 	properties {
-		property "sonar.projectKey", "advprog-2026-A3-project_individual-preparation"
+		property "sonar.projectKey", "advprog-2026-A3-project-individual-preparation"
 		property "sonar.organization", "advprog-a3"
 		property "sonar.host.url", "https://sonarcloud.io"
 	}
