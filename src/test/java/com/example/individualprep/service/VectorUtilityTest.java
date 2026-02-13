@@ -31,4 +31,16 @@ public class VectorUtilityTest {
         double result = vectorUtility.norm(vector);
         assertEquals(0.0, result, 0.0001);
     }
+
+    @Test
+    void testMultiply() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] inputVector = {2.0, 5.0, -3.0};
+        int scalar = 3;
+
+        double[] expectedResult = {6.0, 15.0, -9.0};
+        double[] actualResult = vectorUtility.multiply(inputVector, scalar);
+
+        assertArrayEquals(expectedResult, actualResult, "Hasil perkalian vektor salah!");
+    }
 }
