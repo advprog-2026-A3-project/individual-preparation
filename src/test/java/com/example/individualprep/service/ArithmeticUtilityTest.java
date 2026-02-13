@@ -63,5 +63,9 @@ class ArithmeticUtilityTest {
         double actualResult = arithmeticUtility.subtract(operand1, operand2);
 
         assertEquals(expectedResult, actualResult, 0.0001, "Hasil pengurangan dengan desimal salah!");
+    void testArithmeticAdd() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.add(5.0, 3.0);
+        assertEquals(8.0, result, 0.0001);
     }
 }
