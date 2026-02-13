@@ -6,42 +6,18 @@ import org.springframework.stereotype.Service;
 public class VectorUtility {
     
     public double[] add(double[] v1, double[] v2) {
-        if (v1 == null || v2 == null) {
-            throw new IllegalArgumentException("Vector cannot be null");
-        }
-        if (v1.length != v2.length) {
-            throw new IllegalArgumentException("Vector length must be the same");
-        }
-
-        int vectorLength = v1.length;
-        double[] result = new double[vectorLength];
-        for(int index=0; index < vectorLength; index++){
-            result[index] = v1[index] + v2[index];
-        }
-        return result;
+        // TODO: Implement me properly!
+        return new double[] { 0.0, 0.0, 0.0 };
     }
 
     public double[] subtract(double[] v1, double[] v2) {
-        if (v1 == null || v2 == null) {
-            throw new IllegalArgumentException("Vector cannot be null");
-        }
-        if (v1.length != v2.length) {
-            throw new IllegalArgumentException("Vector length must be the same");
-        }
-
-        double[] result = new double[v1.length];
-        for (int i = 0; i < v1.length; i++) {
-            result[i] = v1[i] - v2[i];
-        }
-        return result;
+        // TODO: Implement me properly!
+        return new double[] { 0.0, 0.0, 0.0 };
     }
 
     public double[] multiply(double[] v1, int x) {
-        double[] result = new double[v1.length];
-        for (int i = 0; i < v1.length; i++){
-            result[i] = v1[i] * x;
-        }
-        return result;
+        // TODO: Implement me properly!
+        return new double[] { 0.0, 0.0, 0.0 };
     }
     
     public double dotProduct(double[] v1, double[] v2) {

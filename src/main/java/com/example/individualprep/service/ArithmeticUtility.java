@@ -15,38 +15,17 @@ public class ArithmeticUtility {
     }
 
     public double multiply(double o1, double o2) {
-        return o1 * o2;
-    }
+        // TODO: Implement me properly!
+        return 0.0;    }
 
     public double divide(double o1, double o2) {
-        if (o2 == 0.0) {
-            throw new ArithmeticException("Cannot divide by zero");
-        }
-        return o1 / o2;
+        // TODO: Implement me properly!
+        return 0.0;
     }
 
     public double exponent(double o1, int n) {
-        if (o1 == 0 && n < 0) {
-            throw new IllegalArgumentException("0 cannot be raised to a negative power.");
-        }
-
-        double result = 1;
-
-        if (n == 0) {
-            return result;
-        }
-
-        int absN = Math.abs(n);
-
-        for (int i = 0; i < absN; i++) {
-            result *= o1;
-        }
-
-        if (n < 0) {
-            return 1 / result;
-        }
-
-        return result;
+        // TODO: Implement me properly!
+        return 0.0;
     }
 }
 
