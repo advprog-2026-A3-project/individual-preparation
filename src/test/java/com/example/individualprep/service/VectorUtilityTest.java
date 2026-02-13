@@ -85,7 +85,7 @@ public class VectorUtilityTest {
     @Test
     void testDotProductNullVector() {
         VectorUtility vectorUtility = new VectorUtility();
-        
+
         assertThrows(IllegalArgumentException.class, () -> {
             vectorUtility.dotProduct(null, new double[]{1.0, 2.0});
         }, "Harus throw exception untuk vector null!");
