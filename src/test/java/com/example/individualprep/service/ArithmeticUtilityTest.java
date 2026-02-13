@@ -63,9 +63,68 @@ class ArithmeticUtilityTest {
         double actualResult = arithmeticUtility.subtract(operand1, operand2);
 
         assertEquals(expectedResult, actualResult, 0.0001, "Hasil pengurangan dengan desimal salah!");
+    }
+
     void testArithmeticAdd() {
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         double result = arithmeticUtility.add(5.0, 3.0);
         assertEquals(8.0, result, 0.0001);
+    }
+
+    @Test
+    void testExponentPositivePower() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(2, 3);
+        assertEquals(8.0, result, 0.000001);
+    }
+
+    @Test
+    void testExponentZeroPower() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(5, 0);
+        assertEquals(1.0, result, 0.000001);
+    }
+
+    @Test
+    void testExponentNegativePower() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(2, -2);
+        assertEquals(0.25, result, 0.000001);
+    }
+
+    @Test
+    void testNegativeBaseOddExponent() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(-2, 3);
+        assertEquals(-8.0, result, 0.000001);
+    }
+
+    @Test
+    void testNegativeBaseEvenExponent() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(-2, 2);
+        assertEquals(4.0, result, 0.000001);
+    }
+
+    @Test
+    void testZeroBasePositiveExponent() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(0, 3);
+        assertEquals(0.0, result, 0.000001);
+    }
+
+    @Test
+    void testZeroBaseZeroExponent() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        double result = arithmeticUtility.exponent(0, 0);
+        assertEquals(1.0, result, 0.000001);
+    }
+
+    @Test
+    void testZeroBaseNegativeExponentThrowsException() {
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertThrows(IllegalArgumentException.class, () -> {
+            arithmeticUtility.exponent(0, -2);
+        });
     }
 }
