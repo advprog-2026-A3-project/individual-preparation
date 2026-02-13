@@ -1,5 +1,6 @@
 package com.example.individualprep;
 
+import com.example.individualprep.service.ArithmeticUtility;
 import com.example.individualprep.service.VectorUtility;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,12 @@ class IndividualprepApplicationTests {
 	}
 
 	@Test
+	void testArithmeticAdd() {
+		ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+		double result = arithmeticUtility.add(5.0, 3.0);
+		assertEquals(8.0, result, 0.0001);
+	}
+
 	void testVectorNorm_PositiveNumbers() {
 		double[] vector = {3.0, 4.0};
 		double result = vectorUtility.norm(vector);
