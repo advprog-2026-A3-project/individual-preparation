@@ -51,3 +51,10 @@ checkstyle {
 	toolVersion = "10.12.5"
 	configFile = file("config/checkstyle/checkstyle.xml")
 }
+
+configurations {
+	checkstyle {
+		// Fix conflict: google-collections (1.0) bentrok capability dengan guava
+		exclude group: "com.google.collections", module: "google-collections"
+	}
+}
